@@ -1,5 +1,5 @@
 {
-  "name": "technical_challenge",
+  "name": "AssetSale",
   "version": "1.0.0",
   "description": "Blocksmith Technical Challenge (Solution)",
   "main": "truffle-config.js",
