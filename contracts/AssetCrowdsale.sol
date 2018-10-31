@@ -7,8 +7,12 @@ import 'openzeppelin-solidity/contracts/crowdsale/validation/TimedCrowdsale.sol'
 import 'openzeppelin-solidity/contracts/crowdsale/distribution/PostDeliveryCrowdsale.sol';
 import 'openzeppelin-solidity/contracts/token/ERC20/ERC20Mintable.sol';
 import 'openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol';
-/**
- * @title AssetCrowdsale
+
+contract AssetCrowdsaleToken is ERC20Mintable, ERC20Detailed {
+  constructor(string name, string symbol) public ERC20Detailed(name, symbol, 18) {}
+}
+
+/**s
  * The way to add new features to a base crowdsale is by multiple inheritance.
  * In this example we are providing following extensions:
  * CappedCrowdsale - sets a max boundary for raised funds
@@ -19,6 +23,7 @@ import 'openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol';
  * After adding multiple features it's good practice to run integration tests
  * to ensure that subcontracts works together as intended.
  */
+
 contract AssetCrowdsale is TimedCrowdsale, RefundableCrowdsale, PostDeliveryCrowdsale, CappedCrowdsale {
 
   constructor(
